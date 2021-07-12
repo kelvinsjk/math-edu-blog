@@ -6,14 +6,14 @@
       "external": false
     },
     {
-      "text": "GitHub",
-      "url": "https://github.com/hankchizljaw/hylia",
+      "text": "Blog GitHub",
+      "url": "https://github.com/kelvinsjk/math-edu-blog",
       "external": true
     },
     {
-      "text": "Example Contact Page",
-      "url": "/contact",
-      "external": false
+      "text": "Math Edu GitHub",
+      "url": "https://github.com/kelvinsjk/math-edu",
+      "external": true
     }
   ]
 }

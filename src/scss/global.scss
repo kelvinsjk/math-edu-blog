@@ -51,6 +51,15 @@ img {
   outline-offset: 0.25rem;
 }
 
+// indent lists within post__body and intro_summary
+.intro__summary > ul,
+.intro__summary > ol,
+.post__body > ul,
+.post__body > ol {
+  list-style-position: inside;
+  //margin-left: 2em;
+}
+
 /**
  * PROJECT IMPORTS
  */

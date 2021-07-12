@@ -1,12 +1,20 @@
 ---
 layout: home
-title: A simple starter kit for Eleventy
+title: "math-edu: mathematics in the digital age"
 postsHeading: Latest posts
 archiveButtonText: See all posts
-metaDesc: 'Hylia is a lightweight Eleventy starter kit to help you to create your own blog or personal website.'
+metaDesc: 'blog for the math-edu library'
 socialImage: ''
 ---
 
-Hylia is a lightweight [Eleventy](https://11ty.io) starter kit with [Netlify CMS](https://www.netlifycms.org/) pre-configured, so that you can one-click install a progressive, accessible blog in minutes. It also gives you a well organised starting point to extend yourself. It’s by [Andy Bell](https://twitter.com/hankchizljaw) and [friends](https://github.com/aarongustafson/hylia/graphs/contributors).
+math-edu is a math library I'm building for working with common number types encountered in high school mathematics. 
 
-Get started now by [deploying Hylia to Netlify.](https://app.netlify.com/start/deploy?repository=https://github.com/hankchizljaw/hylia&stack=cms)
+Planned features:
+
+- Classes: fractions, surds/radicals, vectors, complex numbers
+- Each class comes with built-in functions commonly encountered
+- toString method converts to $\\LaTeX$ string
+
+Used in my other projects:
+- [Math Atlas](https://math-atlas.vercel.app)
+- [3D Vectors](https://3d-vectors.vercel.app)
