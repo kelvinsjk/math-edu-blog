@@ -34,15 +34,18 @@
       text-decoration: underline;
     }
 
-    code {
+    code,
+    .latex-blackboard {
       font-size: 1.2em;
       color: var(--color-theme-primary);
       font-weight: 600;
       margin-left: 0.01ch;
       margin-right: 0.01ch;
+      white-space: nowrap;
     }
 
-    pre > code {
+    pre > code,
+    .latex-blackboard {
       margin-right: 0;
       border: 1px solid rgba(255, 255, 255, 0.1);
       overflow-x: auto;
@@ -76,14 +79,16 @@
     pre > code,
     .video-player,
     .video-player + *,
-    video {
+    video,
+    .latex-blackboard {
       --flow-space: #{get-size('max')};
     }
 
     figure,
     pre > code,
     .video-player,
-    video {
+    video,
+    .latex-blackboard {
       width: 100vw;
       max-width: map-get($metrics, 'wrap-max-width');
       margin-left: 50%; /*changing this value to 47% removes the horizontal scrollbar once the viewport is < 930px */
@@ -95,7 +100,8 @@
 
     figure img,
     pre > code,
-    .video-player {
+    .video-player,
+    .latex-blackboard {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
@@ -117,6 +123,15 @@
       background: var(--color-dark);
       padding: get-size(700);
       font-size: get-size(500);
+    }
+
+    .latex-blackboard {
+      display: block;
+      background: #004400;
+      color: white;
+      padding: get-size(700);
+      font-size: get-size(500);
+      margin-top: 0;
     }
   }
 
