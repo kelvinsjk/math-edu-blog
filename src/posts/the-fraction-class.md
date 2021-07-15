@@ -66,19 +66,24 @@ The `toString()` method converts the fraction to a $\LaTeX$ string that can be t
 We find the use of the template literal backtick particularly idiomatic
 and will be using them extensively in our documentation.
 
+By setting the `displayMode` parameter to `true` (`false` by default), we can
+also get our fraction to be in 'displaystyle'.
+
 ```typescript
-toString(): string
+toString(displayMode:boolean = false): string
 /* examples */
 twoThird.toString()     // '\\frac{2}{3}`
 `${negativeThree}`      // '- 3'
 `${zero}`               // '0'
 `${negativeThreeFifth}` // '- \\frac{3}{5}'
+`${oneQuarter}` // '\\frac{1}{4}'
+`${oneQuarter.toString(true)}` // '\\displaystyle \\frac{1}{4}'
 ```
 
 <div class="latex-blackboard">
   $\LaTeX$ output: <br>
   <div style="text-align: center;"> 
-    $ \frac{2}{3}, \quad - 3, \quad 0, \quad - \frac{3}{5} $ 
+    $ \frac{2}{3}, \quad - 3, \quad 0, \quad - \frac{3}{5}, \quad \frac{1}{4}, \quad \displaystyle \frac{1}{4} $ 
   </div>
 </div>
 
