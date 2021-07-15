@@ -102,7 +102,8 @@ twoThird.minus(oneQuarter)                               // subtraction
 twoThird.times(negativeThreeFifth).divide(negativeThree) // chaining multiplication and division
 negativeThreeFifth.pow(2)                                // exponentiation
 /* LaTeX demo */
-`${twoThird} + ${oneQuarter} = ${sum}`           
+`${twoThird} + ${oneQuarter} = ${sum}`
+/* More demos on the Svelte REPL at the top of the page */  
 ```
 
 <div class="latex-blackboard">
