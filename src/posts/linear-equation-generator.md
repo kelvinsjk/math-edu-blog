@@ -6,7 +6,7 @@ tags:
   - documentation
   - Fraction
   - Term
-  - TermArray
+  - Expression
   - tutorial
 ---
 
@@ -55,7 +55,7 @@ const b = new Fraction(-3);
 const c = new Fraction(-5,7);
 // set up ax and (ax + b) expressions
 const ax = new Term(a, 'x');
-const ax_PLUS_b = new TermArray(ax, b);
+const ax_PLUS_b = new Expression(ax, b);
 // get question: latex output line 1
 const question = `${ax_PLUS_b} = ${c}`;
 // get answer: latex output line 2
@@ -75,7 +75,7 @@ const answer = `x = ${c.minus(b).divide(a)}`;
 We think this approach is pretty idiomatic and quite closely aligned to the mathematical chain of thought. 
 
 We first set up our constants $a,b$ and $c$ with the `Fraction` class. Then we create the $ax$ term by using the `Term` class.
-An expression like $ax+b$ can be seen as an Array of terms (to be added) so we use the `TermArray` class.
+An expression like $ax+b$ can be seen as an Array of terms (to be added) so we use the `Expression` class.
 
 With these setup, we can generate the $\LaTeX$ string for the question by using the `toString` method in those classes
 
@@ -208,24 +208,24 @@ Notice how the `Term` class handles the 0, 1 and -1 coefficients when we have a 
 
 > A `Fraction` class can be thought of as a 'constant' `Term` and is converted as such through the `toTerm` method
 
-### The TermArray class
+### The Expression class
 
 A mathematical expression can be thought of as a sum of terms. It thus makes sense to represent an expression digitally as an `Array` of terms, which we implement
-in `math edu` as the `TermArray` class.
+in `math edu` as the `Expression` class.
 
 The constructor takes `Term`s (and/or `Fraction`s and/or `number`s) as arguments and concatenate them into an array. The `toString` method then shows the representation of the
 sum of these terms, typesetting any instance of $a + -b$ as we have encountered as $a - b$
 
 ```typescript
-/* TermArray class demo */
+/* Expression class demo */
 const twoThird = new Fraction(2,3);
 const twoThirdX = new Term(twoThird, 'x');
-// the TermArray constructor
-const twoThirdX_MINUS_three = new TermArray(twoThirdX, -3); // latex output 1
+// the Expression constructor
+const twoThirdX_MINUS_three = new Expression(twoThirdX, -3); // latex output 1
 // automatic simplification demo
 const x = new Term(1, 'x');
 const oneQuarter = new Fraction(1, 4);
-const x_MINUS_three_PLUS_twoThirdX_PLUS_oneQuarter = new TermArray(x, -3, twoThirdX, oneQuarter);
+const x_MINUS_three_PLUS_twoThirdX_PLUS_oneQuarter = new Expression(x, -3, twoThirdX, oneQuarter);
 ```
 <div class="latex-blackboard">
   $\LaTeX$ output: <br>
@@ -237,12 +237,12 @@ const x_MINUS_three_PLUS_twoThirdX_PLUS_oneQuarter = new TermArray(x, -3, twoThi
   </div>
 </div>
 
-For the complicated `TermArray` we defined representing $x - 3 + \frac{2}{3} x + \frac{1}{4}$, our implementation has automatically combined
+For the complicated `Expression` we defined representing $x - 3 + \frac{2}{3} x + \frac{1}{4}$, our implementation has automatically combined
 the 'like terms' to give the final `toString` output of $ \frac{5}{3} x - \frac{11}{4}$.
 
 ## Conclusion
 
-The `Fraction`, `Term` and `TermArray` classes in `math edu` can handle the arithmetic and output conversion aspects of our project,
+The `Fraction`, `Term` and `Expression` classes in `math edu` can handle the arithmetic and output conversion aspects of our project,
 allowing us to focus on our key mathematical ideas.
 
 ## Supercharging our linear equation generator
