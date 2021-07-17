@@ -17,7 +17,7 @@ the next natural step is to build a quadratic equation generator.
 In this tutorial we will explore the ideas behind extending our `Term` and `Expression` classes we saw previously into
 the `PolynomialTerm` and `Polynomial` classes.
 
-> If you have an idea making use of a data structure that isn't implemented in `math edu`, we recommending extending the classes
+> If you have an idea making use of a data structure that isn't implemented in **_math edu_**, we recommending extending the classes
 > provided.
 
 # Creating a quadratic equation generator (factorizable)
@@ -64,7 +64,7 @@ For illustration, let us first try to tackle the case where $a = 1, b = -2, c = 
 	
 ```
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ 3x^2 - 2x - 8 = 0$ 
   </div>
@@ -81,11 +81,11 @@ only major downer in setting it up was having to figure out $A = ac$, $B = ad + 
 
 Polynomial expansions like this is something we encounter rather regularly so let's add some functionality to our codebase.
 
-> Almost all additional classes in `math edu` are extended from the `Fraction`, `Term` and `Expression` classes
+> Almost all additional classes in **_math edu_** are extended from the `Fraction`, `Term` and `Expression` classes
 
 ## How we built the PolynomialTerm and Polynomial classes
 
-This section details some of the ideas in building the `PolynomialTerm` and `Polynomial` classes in `math edu`.
+This section details some of the ideas in building the `PolynomialTerm` and `Polynomial` classes in **_math edu_**.
 The hope is that you will be able to use some of these ideas to build your own customized data type if necessary.
 Skip to the next section if you just want to see it being used.
 
@@ -164,7 +164,7 @@ const answer = `x = ${new Fraction(-b, a)} \\quad \\textrm{or} \\quad x = ${new 
 const question2 = `${Ax2_PLUS_Bx_PLUS_c} = 0`;
 ```
 
-`math edu` takes care of the polynomial expansion for us: no more $B = ad + bc$ calculations.
+**_math edu_** takes care of the polynomial expansion for us: no more $B = ad + bc$ calculations.
 
 
 ## Supercharging our quadratic equation generator

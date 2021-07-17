@@ -34,14 +34,18 @@
       text-decoration: underline;
     }
 
-    code,
-    .latex-blackboard {
-      font-size: 1.2em;
-      color: var(--color-theme-primary);
+    code{
+      font-size: 85%;
+      color: #102538;
+      //font-size: 1.2em;
+      //color: var(--color-theme-primary);
       font-weight: 600;
       margin-left: 0.01ch;
       margin-right: 0.01ch;
       white-space: nowrap;
+      background-color: #cccccc;
+      border-radius: 3px;
+      padding: .2em .4em;
     }
 
     pre > code,
@@ -126,13 +130,42 @@
     }
 
     .latex-blackboard {
+      font-size: 1.2em;
+      font-weight: 600;
+      white-space: nowrap;
+
       display: block;
       background: #004400;
       color: white;
       padding: get-size(700);
-      font-size: get-size(500);
       margin-top: 0;
       border: 5px ridge #773F1A;
+    }
+
+    .blackboard-heading {
+      position: absolute;
+      left: 1rem;
+      top: 1rem
+    }
+
+    table td,
+    table th {
+      padding: 6px 13px;
+      border: 1px solid #cccccc;
+    }
+
+    table tr{
+      border-top: 1px solid #cccccc;
+    }
+
+    table {
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    table tr:nth-child(2n),
+    table th {
+      background-color: #fedb8b50;
     }
   }
 

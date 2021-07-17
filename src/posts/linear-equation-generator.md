@@ -29,10 +29,10 @@ A typical workflow may look like this:
 In many of the author's projects, steps 2 and 4 often turn out to be overly complicated and 
 take us away from the mathematical ideas we want to showcase. 
 
-> The `math edu` project aims to smoothen the process from idea to output by making each step
+> The **_math edu_** project aims to smoothen the process from idea to output by making each step
 > as close as possible to the underlying mathematical structure. 
 
-In this post we will use the example of a linear equation generator to showcase how `math edu`
+In this post we will use the example of a linear equation generator to showcase how **_math edu_**
 can accomplish this goal.
 
 # Creating a linear equation generator
@@ -63,7 +63,7 @@ const answer = `x = ${c.minus(b).divide(a)}`;
 ```
 
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ \frac{2}{3} x - 3 = - \frac{5}{7} $ 
   </div>
@@ -79,7 +79,7 @@ An expression like $ax+b$ can be seen as an Array of terms (to be added) so we u
 
 With these setup, we can generate the $\LaTeX$ string for the question by using the `toString` method in those classes
 
-> Every class in `math edu` comes with a `toString` method to convert to $\LaTeX$
+> Every class in **_math edu_** comes with a `toString` method to convert to $\LaTeX$
 
 The use of the template literal, along with
 the naming convention makes the code to generate the question, `` `${ax_PLUS_b} = ${c}` ``, look and sound similar to the symbolic representation we are used to.
@@ -89,7 +89,7 @@ Finally, the use of chaining for our arithmetic functions `minus` and `divide` m
 ## How we got here
 
 The rest of this post will detail some of the challenges in implementing this project without
-`math edu`, and showcase some of our features.
+**_math edu_**, and showcase some of our features.
 
 ## Attempt 1
 
@@ -111,7 +111,7 @@ const answerDenominator = a1 * b2 * c2;
 const answer1 = `x = \\frac{${answerNumerator}}{${answerDenominator}}`;
 ```
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ \frac{2}{3} x + \frac{-3}{1} = \frac{-5}{7} $ 
   </div>
@@ -130,7 +130,7 @@ something we want to do mentally often (vs the simpler `(c - b)/a`). Having to d
 
 ### The Fraction class
 
-The `Fraction` class provided by `math edu` solves these problem. Fractions are always simplified before being stored (with 'hoisting' of 
+The `Fraction` class provided by **_math edu_** solves these problem. Fractions are always simplified before being stored (with 'hoisting' of 
 negative signs if necessary), and the `toString` method on the `Fraction` class handles the fraction vs integer cases.
 
 The arithmetic functions are also implemented as class instance methods allowing us to get our answer with
@@ -161,7 +161,7 @@ const question2b = `${a2}x + ${b} = ${c}`;
 ```
 
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ \frac{2}{3} x + - 3 = - \frac{5}{7} $ 
   </div>
@@ -181,7 +181,7 @@ from other coefficients.
 
 ### The Term class
 
-To handle the first problem, we introduce the `Term` class in `math edu`. A `Term` is made up of a `coeff` (coefficient) and `variable` so that is how we
+To handle the first problem, we introduce the `Term` class in **_math edu_**. A `Term` is made up of a `coeff` (coefficient) and `variable` so that is how we
 have set up the constructor.
 
 ```typescript
@@ -198,7 +198,7 @@ const twoThirdTerm = new Term(twoThird); // latex output 5
 const oneTerm = new Fraction(1).toTerm(); // latex output 6
 ```
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ x, \quad \frac{2}{3}x, \quad - x^2, \quad 0, \quad \frac{2}{3}, \quad 1 $ 
   </div>
@@ -211,7 +211,7 @@ Notice how the `Term` class handles the 0, 1 and -1 coefficients when we have a 
 ### The Expression class
 
 A mathematical expression can be thought of as a sum of terms. It thus makes sense to represent an expression digitally as an `Array` of terms, which we implement
-in `math edu` as the `Expression` class.
+in **_math edu_** as the `Expression` class.
 
 The constructor takes `Term`s (and/or `Fraction`s and/or `number`s) as arguments and concatenate them into an array. The `toString` method then shows the representation of the
 sum of these terms, typesetting any instance of $a + -b$ as we have encountered as $a - b$
@@ -228,7 +228,7 @@ const oneQuarter = new Fraction(1, 4);
 const x_MINUS_three_PLUS_twoThirdX_PLUS_oneQuarter = new Expression(x, -3, twoThirdX, oneQuarter);
 ```
 <div class="latex-blackboard">
-  $\LaTeX$ output: <br>
+  <div class="blackboard-heading">$\LaTeX$ output:</div>
   <div style="text-align: center;"> 
     $ \frac{2}{3} x - 3$
   </div>
@@ -242,7 +242,7 @@ the 'like terms' to give the final `toString` output of $ \frac{5}{3} x - \frac{
 
 ## Conclusion
 
-The `Fraction`, `Term` and `Expression` classes in `math edu` can handle the arithmetic and output conversion aspects of our project,
+The `Fraction`, `Term` and `Expression` classes in **_math edu_** can handle the arithmetic and output conversion aspects of our project,
 allowing us to focus on our key mathematical ideas.
 
 ## Supercharging our linear equation generator
@@ -250,7 +250,7 @@ allowing us to focus on our key mathematical ideas.
 But wait, there's more! 
 
 With the earlier set-up, we manually picked our unknown constants $a,b$ and $c$. We can go even better: let's randomly generate these constants.
-`math edu` provides a `getRandomFrac` function to do that.
+**_math edu_** provides a `getRandomFrac` function to do that.
 ```typescript
 /* getRandomFrac */
 const aRandom = getRandomFrac({avoid: [0]});
