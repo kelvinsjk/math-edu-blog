@@ -40,28 +40,28 @@ For illustration, let us first try to tackle the case where $a = 1, b = -2, c = 
 ## Attempt 1
 
 ```typescript
-	/* attempt 1 */
-	// set up constants
-	const a = 1, b = -2, c = 3, d = 4;
-	// set up ax, (ax + b), cx, (cx+d) expressions
-	const ax = new Term(a, 'x');
-	const ax_PLUS_b = new Expression(ax, b);
-	const cx = new Term(c, 'x');
-	const cx_PLUS_d = new Expression(cx, d);
-	// get A,B,C and create the Ax2 + Bx + C expression
-	const A = a*c;
-	const B = a*d + b*c
-	const C = b*d;
-	const Ax2 = new Term(A, 'x^2');
-	const Bx = new Term(B, 'x');
-	const Ax2_PLUS_Bx_PLUS_c = new Expression(Ax2, Bx, C);
-  // get ax2 + bx + c = 0 question: latex output line 1
-	const question2 = `${Ax2_PLUS_Bx_PLUS_c} = 0`;
-	// get factorized question: latex output line 2
-	const question1 = `(${ax_PLUS_b})(${cx_PLUS_d}) = 0`;
-	// get answers: latex output line 3
-	const answer = `x = ${new Fraction(-b, a)} \\quad \\textrm{or} \\quad x = ${new Fraction(-d, c)}`;
-	
+/* attempt 1 */
+// set up constants
+const a = 1, b = -2, c = 3, d = 4;
+// set up ax, (ax + b), cx, (cx+d) expressions
+const ax = new Term(a, 'x');
+const ax_PLUS_b = new Expression(ax, b);
+const cx = new Term(c, 'x');
+const cx_PLUS_d = new Expression(cx, d);
+// get A,B,C and create the Ax2 + Bx + C expression
+const A = a*c;
+const B = a*d + b*c
+const C = b*d;
+const Ax2 = new Term(A, 'x^2');
+const Bx = new Term(B, 'x');
+const Ax2_PLUS_Bx_PLUS_C = new Expression(Ax2, Bx, C);
+// get ax2 + bx + c = 0 question: latex output line 1
+const question2 = `${Ax2_PLUS_Bx_PLUS_C} = 0`;
+// get factorized question: latex output line 2
+const question1 = `(${ax_PLUS_b})(${cx_PLUS_d}) = 0`;
+// get answers: latex output line 3
+const or = '\\quad \\textrm{or} \\quad' // spacing between roots
+const answer = `x = ${new Fraction(-b, a)} ${or} = ${new Fraction(-d, c)}`;
 ```
 <div class="latex-blackboard">
   <div class="blackboard-heading">$\LaTeX$ output:</div>
@@ -105,20 +105,18 @@ the power $2$ and a "`variableAtom`" $x$. This observation is how we start exten
 
 ```typescript
 class PolynomialTerm extends Term{
-  variableAtom: string
+  variableAtom: string;
   n: number; // the power
-... 'code for constructor and additional methods'
-```
-
-```typescript
-constructor(coeff: number|Fraction, variableAtom = 'x', n: number){
-  // create variable from variableAtom and n: a simplified version is shown here
-  const variable = `${variableAtom}^${n}`;
-  // calls the Term constructor
-  super(coeff, variable);
-  // stores the new information unique to Polynomial Term
-  this.variableAtom = variableAtom;
-  this.n = n;
+  constructor(coeff: number|Fraction, variableAtom = 'x', n: number){
+    // create variable from variableAtom and n: a simplified version is shown here
+    const variable = `${variableAtom}^${n}`;
+    // calls the Term constructor
+    super(coeff, variable);
+    // stores the new information unique to Polynomial Term
+    this.variableAtom = variableAtom;
+    this.n = n;
+  }
+  ...class methods...
 }
 ```
 
@@ -159,9 +157,10 @@ const Ax2_PLUS_Bx_PLUS_c = ax_PLUS_b.multiply(cx_PLUS_d);
 // get factorized question: latex output line 1
 const question1 = `(${ax_PLUS_b})(${cx_PLUS_d}) = 0`;
 // get answers: latex output line 2
-const answer = `x = ${new Fraction(-b, a)} \\quad \\textrm{or} \\quad x = ${new Fraction(-d, c)}`;
-// get ax2 + bx + c = 0 question: latex output line 3
-const question2 = `${Ax2_PLUS_Bx_PLUS_c} = 0`;
+const or = '\\quad \textrm{or} \quad';
+const answer = `x = ${new Fraction(-b, a)} ${or} = ${new Fraction(-d, c)}`;
+// get Ax2 + Bx + C = 0 question: latex output line 3
+const question2 = `${Ax2_PLUS_Bx_PLUS_C} = 0`;
 ```
 
 **_math edu_** takes care of the polynomial expansion for us: no more $B = ad + bc$ calculations.
@@ -183,7 +182,8 @@ const factor2 = root1.toFactor();
 const quadratic = factor1.multiply(factor2);
 // get output
 const question1 = `(${factor1}) (${factor2}) = 0`;
-const answer = `x = ${root1} \\quad \\textrm{or} \\quad x = ${root2}`;
+const or = '\quad \\textrm{or} \\quad';
+const answer = `x = ${root1} ${or} x = ${root2}`;
 const question2 = `${quadratic} = 0`;
 ```
 
